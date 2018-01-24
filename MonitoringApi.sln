@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2020
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioStone", "DesafioStone\DesafioStone.csproj", "{73A64D2B-3F36-4082-AAA2-5E6386BFFF59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioStone", "DesafioStone\DesafioStone.csproj", "{73A64D2B-3F36-4082-AAA2-5E6386BFFF59}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Monitoring.Sql", "Monitoring.Sql\Monitoring.Sql.sqlproj", "{85AB2F6C-5531-48D0-ADDB-E11D62C25B8F}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoring.Repository", "Monitoring.Repository\Monitoring.Repository.csproj", "{43B3F2DE-D221-4D19-8DCE-CCFAA19BDEF3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitoring.ExternalAdapters", "Monitoring.ExternalAdapters\Monitoring.ExternalAdapters.csproj", "{EE7F95D9-7747-415B-A895-1E9A83C48C42}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.Tests", "..\..\..\Desktop\Monitoring-master\Repository.Tests\Repository.Tests.csproj", "{9DEE0983-502E-4D63-88DF-DA1F61E08EC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{EE7F95D9-7747-415B-A895-1E9A83C48C42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE7F95D9-7747-415B-A895-1E9A83C48C42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE7F95D9-7747-415B-A895-1E9A83C48C42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DEE0983-502E-4D63-88DF-DA1F61E08EC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DEE0983-502E-4D63-88DF-DA1F61E08EC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DEE0983-502E-4D63-88DF-DA1F61E08EC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DEE0983-502E-4D63-88DF-DA1F61E08EC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
