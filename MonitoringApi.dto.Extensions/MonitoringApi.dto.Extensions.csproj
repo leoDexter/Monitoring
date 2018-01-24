@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Monitoring.Repository\Monitoring.Repository.csproj" />
+    <ProjectReference Include="..\MonitoringApi.dto\MonitoringApi.dto.csproj" />
+  </ItemGroup>
+
+</Project>
