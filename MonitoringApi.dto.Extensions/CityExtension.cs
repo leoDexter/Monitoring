@@ -24,15 +24,16 @@ namespace MonitoringApi.dto.Extensions
         }
 
         /// <summary>
-        /// Carrega no objeto atual e retorna todas as temperaturas registradas nas íltimas 30 horas
+        /// Carrega no objeto atual e retorna todas as temperaturas registradas nas íltimas XX horas
         /// </summary>
-        /// <param name="city"></param>
-        /// <param name="config"></param>
+        /// <param name="city">Cidade</param>
+        /// <param name="config">Configurações da aplicação</param>
+        /// <param name="latestHours">Numero de horas</param>
         /// <returns></returns>
-        public static IEnumerable<Temperature> LatestTemperaturesExt(this City city, IConfiguration config)
+        public static IEnumerable<Temperature> LatestTemperaturesExt(this City city, IConfiguration config, int latestHours)
         {
             var temperatureRepository = new TemperatureRepository(config);
-            var lastestTemperature = temperatureRepository.GetByDate(new Temperature { CityId = city.Id }, DateTime.Now.AddHours(-2));
+            var lastestTemperature = temperatureRepository.GetByDate(new Temperature { CityId = city.Id }, DateTime.Now.AddHours(0 - latestHours));
             city.Temperatures = lastestTemperature;
 
             return city.Temperatures;
@@ -45,6 +46,6 @@ namespace MonitoringApi.dto.Extensions
             city.Temperatures = new List<Temperature> { lastTemperature };
 
             return lastTemperature;
-        }        
+        }
     }
 }

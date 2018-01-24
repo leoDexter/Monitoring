@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace DesafioStone.Settings
 {
+    /// <summary>
+    /// Configurações de funcionamento do sistema
+    /// </summary>
     public class GeneralSettings
     {
         /// <summary>
@@ -16,5 +19,10 @@ namespace DesafioStone.Settings
         /// Define a quantidade de itens por página na consulta paginada
         /// </summary>
         public int PaginationSize { get; set; }
+
+        /// <summary>
+        /// Parâmetro para o retorno das temperaturas das últimas XX horas da cidade informada
+        /// </summary>
+        public int Latest { get; set; }
     }
 }

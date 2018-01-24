@@ -50,6 +50,11 @@ namespace DesafioStone.Controllers
         /// </summary>
         private IConfiguration _configuration;
 
+        /// <summary>
+        /// Configurações gerais da aplicação
+        /// </summary>
+        private GeneralSettings _generalSettings;
+
         #endregion
 
         #region Constructor
@@ -60,9 +65,14 @@ namespace DesafioStone.Controllers
         /// <param name="configuration">Configurações gerais da aplicação, passado por injeção de dependencia registrada no startup.cs</param>
         /// <param name="byCepSettings">Configurações da api utilizada para buscar cidades por CEP (Opção registrada no startup.cs)</param>
         /// <param name="autocompleteSettings">Configurações da api utilizada para buscar cidades para autocomplete (Opção registrada no startup.cs)</param>        
-        public CitiesController(IConfiguration configuration, IOptionsSnapshot<CityByCepApiSettings> byCepSettings, IOptionsSnapshot<CityAutocompleteApiSettings> autocompleteSettings)
+        /// <param name="generalSettings">Configurações de funcionamento da aplicação (Opção registrada no startup.cs)</param>   
+        public CitiesController(IConfiguration configuration,
+            IOptionsSnapshot<CityByCepApiSettings> byCepSettings,
+            IOptionsSnapshot<CityAutocompleteApiSettings> autocompleteSettings,
+            IOptionsSnapshot<GeneralSettings> generalSettings)
         {
             _configuration = configuration;
+            _generalSettings = generalSettings.Value;
 
             _cityRepository = new CityRepository(_configuration);
             _temperatureRepository = new TemperatureRepository(_configuration);
@@ -86,7 +96,7 @@ namespace DesafioStone.Controllers
         public ActionResult Get(string city_name)
         {
             var city = _cityRepository.GetByName(city_name);
-            city.TemperaturesExt(_configuration);
+            city.LatestTemperaturesExt(_configuration, _generalSettings.Latest);
             return Ok(new CityTemperatureModel(city));
         }
 
