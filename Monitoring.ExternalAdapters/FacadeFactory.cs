@@ -11,6 +11,11 @@ namespace Monitoring.ExternalAdapters
     /// <typeparam name="T"></typeparam>
     public static class FacadeFactory<T> where T : IEntity, new()
     {
+        /// <summary>
+        /// Retorna o adapter correspondete à configuração informada
+        /// </summary>
+        /// <param name="settings">Configuração da api a ser utilizada</param>
+        /// <returns>Adapter da api a ser utilizada</returns>
         public static BaseFacade<T> Create(IApiSettings settings)
         {
             if (settings.AdapterName.Equals("HgBrasilweatherAdapter"))

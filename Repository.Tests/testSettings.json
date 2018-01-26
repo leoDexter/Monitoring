@@ -1,0 +1,5 @@
+﻿{
+  "ConnectionStrings": {
+    "DefaultConnection": "Data Source=.\\sql2014;Initial Catalog=MonitoringDB;Integrated Security=True"
+  }
+}

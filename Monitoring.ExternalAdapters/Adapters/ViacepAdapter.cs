@@ -36,10 +36,10 @@ namespace Monitoring.ExternalAdapters.Adapters
         /// <summary>
         /// Constroi a url com base nos parâmetros informados
         /// </summary>
-        /// <param name="apiSettings"></param>
-        /// <param name="searchBy"></param>
-        /// <param name="term"></param>
-        /// <returns></returns>
+        /// <param name="apiSettings">Configurações da api</param>
+        /// <param name="searchBy">Parâmetro usado na busca</param>
+        /// <param name="term">termo da busca</param>
+        /// <returns>Url montada com as informações de acesso e parâmetros de busca</returns>
         public string BuildUrl(IApiSettings apiSettings, SearchParam searchBy, params string[] term)
         {
             if (searchBy != SearchParam.ByCep)

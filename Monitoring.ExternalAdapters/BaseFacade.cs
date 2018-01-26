@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Monitoring.ExternalAdapters
 {
     /// <summary>
-    /// Handles the request to external api's
+    /// Handles the requests to external api's
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class BaseFacade<T> where T : IEntity
@@ -28,6 +28,12 @@ namespace Monitoring.ExternalAdapters
 
         #region Private functions
 
+        /// <summary>
+        /// Executa a chamada à api externa
+        /// </summary>
+        /// <param name="param">Tipo de parâmetro de busca</param>
+        /// <param name="terms">termos da busca</param>
+        /// <returns></returns>
         private async Task<IEnumerable<T>> RequestExternalApi(SearchParam param, params string[] terms)
         {
             var client = new System.Net.Http.HttpClient();
@@ -43,12 +49,24 @@ namespace Monitoring.ExternalAdapters
 
         #region Public functions
 
+        /// <summary>
+        /// Retorna mais de um valor, quando retornado pela api externa
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="terms"></param>
+        /// <returns></returns>
         public virtual async Task<IEnumerable<T>> FindMany(SearchParam param, params string[] terms)
         {
             var data = await RequestExternalApi(param, terms);
             return data;
         }
 
+        /// <summary>
+        /// Retorna o primeira valor, quando retornado pela api externa
+        /// </summary>
+        /// <param name="param"></param>
+        /// <param name="terms"></param>
+        /// <returns></returns>
         public virtual async Task<T> FindFirstOrDefault(SearchParam param, params string[] terms)
         {
             var data = await RequestExternalApi(param, terms);

@@ -2,6 +2,9 @@
 
 namespace Monitoring.ExternalAdapters.Settings
 {
+    /// <summary>
+    /// Representa as configurações existentes para a api de acesso à api externa usada para audotcomplete
+    /// </summary>
     public class CityAutocompleteApiSettings : IApiSettings
     {
         public string ApiName { get; set; }

@@ -17,8 +17,8 @@ namespace Monitoring.Repository.Validation
             if (dto.CityId <= 0)
                 _customValidationException.AddMessage("A temperatura deve estar relacionada a uma cidade.");
 
-            if (dto.CityId <= 0)
-                _customValidationException.AddMessage("A temperatura deve estar relacionada a uma cidade.");
+            if (dto.Date ==  DateTime.MinValue)
+                _customValidationException.AddMessage("O registro da temperatura deve ter uma data válida.");
         }
 
         public void ValidateUpdate(Temperature dto, IConfiguration Config)
@@ -29,10 +29,11 @@ namespace Monitoring.Repository.Validation
         public void ValidateDelete(Temperature dto, IConfiguration Config)
         {
             var cityRepository = new CityRepository(Config);
-            var record = cityRepository.GetById(dto.CityId);
 
             if (dto.CityId <= 0)
                 _customValidationException.AddMessage("A cidade deve ser informada.");
+
+            var record = cityRepository.GetById(dto.CityId);
 
             if (record == null || record.Id == 0)
                 _customValidationException.AddMessage("A cidade informada não existe mais.");

@@ -74,6 +74,9 @@ namespace Monitoring.Repository
         /// <returns></returns>
         public virtual IEnumerable<Temperature> GetByDate(Temperature dto, DateTime startDate)
         {
+            if (dto.CityId == 0)
+                CustomValidation.ValidationErrors.AddMessage("A cidade deve ser informada");
+
             const string query = "SELECT T.* FROM Temperatures T WHERE T.CityId=@CityId AND T.Date>=@Date";
             var parameters = AddFilterParameters(new Temperature { CityId = dto.CityId, Date = startDate });
 
