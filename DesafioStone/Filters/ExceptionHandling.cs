@@ -35,24 +35,16 @@ namespace MonitoringApi.Filters
                 model = new ErrorModel(HttpStatusCode.BadRequest, (exception.InnerException as ExternalApiException).Message);
             }
             else
-            if (context.Exception is NotImplementedException)
+            if (exception is NotImplementedException)
             {
                 response.StatusCode = (int)HttpStatusCode.NotImplemented;
-                model = new ErrorModel(HttpStatusCode.BadRequest, "Funcionalidade não implementada");
+                model = new ErrorModel(HttpStatusCode.NotImplemented, "Funcionalidade não implementada");
             }
             else
             {
-                response.StatusCode = (int)HttpStatusCode.BadRequest;
-                model = new ErrorModel(HttpStatusCode.BadRequest, "Erro interno");
+                response.StatusCode = (int)HttpStatusCode.InternalServerError;
+                model = new ErrorModel(HttpStatusCode.InternalServerError, "Erro interno");
             }
-
-            //using (var writer = new StreamWriter(response.Body))
-            //{
-            //    writer.Write();
-            //    writer.Flush();
-            //    writer.Close();
-            //}
-
 
             context.Result = new JsonResult(model);
         }
